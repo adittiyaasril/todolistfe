@@ -14,6 +14,7 @@ export const TodoList = () => {
           withCredentials: true,
         }
       );
+      console.log(response.data);
       setTodoItems(response.data.todo);
     } catch (error) {
       console.error("Error fetching ToDo items:", error);

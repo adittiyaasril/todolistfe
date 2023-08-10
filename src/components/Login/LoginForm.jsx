@@ -17,6 +17,8 @@ export const LoginForm = () => {
         { withCredentials: true }
       );
 
+      console.log("Login response:", response.data);
+
       if (response.status === 200) {
         // Redirect user to dashboard or protected page
         window.location.href = "/todo";
