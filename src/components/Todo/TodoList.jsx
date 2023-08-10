@@ -8,6 +8,7 @@ export const TodoList = () => {
 
   const fetchTodoItems = async () => {
     const jwtToken = localStorage.getItem("jwtToken");
+    console.log("JWT Token:", jwtToken); // Log the JWT token for debugging
     try {
       const response = await axios.get(
         "https://todolistbe.vercel.app/api/v1/todo/show",
@@ -17,12 +18,12 @@ export const TodoList = () => {
           },
         }
       );
+      console.log("Todo Items Response:", response.data); // Log the response for debugging
       setTodoItems(response.data.todo);
     } catch (error) {
       console.error("Error fetching ToDo items:", error);
     }
   };
-
   useEffect(() => {
     fetchTodoItems();
   }, []);
