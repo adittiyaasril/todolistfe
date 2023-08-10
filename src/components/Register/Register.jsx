@@ -12,7 +12,7 @@ const Register = () => {
     const checkAuthStatus = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/v1/user/check",
+          "https://todolistbe.vercel.app/api/v1/user/check",
           { withCredentials: true }
         );
         const isAuthenticated = response.data.isAuthenticated;

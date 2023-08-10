@@ -9,7 +9,7 @@ export const TodoList = () => {
   const fetchTodoItems = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/v1/todo/show",
+        "https://todolistbe.vercel.app/api/v1/todo/show",
         {
           withCredentials: true,
         }
@@ -26,9 +26,12 @@ export const TodoList = () => {
 
   const handleDeleteTodo = async (itemId) => {
     try {
-      await axios.delete(`http://localhost:8000/api/v1/todo/delete/${itemId}`, {
-        withCredentials: true,
-      });
+      await axios.delete(
+        `https://todolistbe.vercel.app/api/v1/todo/delete/${itemId}`,
+        {
+          withCredentials: true,
+        }
+      );
 
       fetchTodoItems();
     } catch (error) {
@@ -38,7 +41,7 @@ export const TodoList = () => {
   const handleCreateTodo = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/todo/create",
+        "https://todolistbe.vercel.app/api/v1/todo/create",
         {
           item: newTodo,
         },

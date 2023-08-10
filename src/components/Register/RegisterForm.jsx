@@ -13,7 +13,7 @@ export const RegisterForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/user/register",
+        "https://todolistbe.vercel.app/api/v1/user/register",
         {
           username,
           email,
