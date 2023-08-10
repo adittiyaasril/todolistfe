@@ -26,15 +26,17 @@ export const LandingPage = () => {
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        const token = localStorage.getItem("token"); // Get the token from localStorage or your state management
+        const token = localStorage.getItem("token"); // Get the token from localStorage
+
         const response = await axios.get(
           "https://todolistbe.vercel.app/api/v1/user/check",
           {
             headers: {
-              Authorization: `Bearer ${token}`, // Include the token in the request headers
+              Authorization: `Bearer ${token}`,
             },
           }
         );
+
         setIsAuthenticated(response.data.isAuthenticated);
 
         if (response.data.isAuthenticated) {
@@ -43,7 +45,7 @@ export const LandingPage = () => {
             "https://todolistbe.vercel.app/api/v1/user/profile",
             {
               headers: {
-                Authorization: `Bearer ${token}`, // Include the token in the request headers
+                Authorization: `Bearer ${token}`,
               },
             }
           );
@@ -56,7 +58,6 @@ export const LandingPage = () => {
 
     checkAuthStatus();
   }, []);
-
   return (
     <div id="title">
       <div className="container mx-auto p-4 flex justify-between items-center text-amber-100">

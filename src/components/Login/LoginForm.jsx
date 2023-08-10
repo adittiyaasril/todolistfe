@@ -18,16 +18,12 @@ export const LoginForm = () => {
         { withCredentials: true }
       );
 
-      console.log("Login response:", response.data);
-
       if (response.status === 200) {
-        const token = response.data.token; // Assuming the token is returned in the response
-
-        // Store the token in localStorage or a state management solution
-        localStorage.setItem("token", token);
+        // Set the JWT token in localStorage
+        localStorage.setItem("token", response.data.token);
 
         // Redirect user to dashboard or protected page
-        router.push("/todo");
+        window.location.href = "/todo";
       }
     } catch (error) {
       console.error("Error logging in:", error);

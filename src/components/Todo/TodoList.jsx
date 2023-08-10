@@ -8,16 +8,17 @@ export const TodoList = () => {
 
   const fetchTodoItems = async () => {
     try {
-      const token = localStorage.getItem("token"); // Get the token from localStorage or your state management
+      const token = localStorage.getItem("token"); // Get the token from localStorage
+
       const response = await axios.get(
         "https://todolistbe.vercel.app/api/v1/todo/show",
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Include the token in the request headers
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-      console.log(response.data);
+
       setTodoItems(response.data.todo);
     } catch (error) {
       console.error("Error fetching ToDo items:", error);
