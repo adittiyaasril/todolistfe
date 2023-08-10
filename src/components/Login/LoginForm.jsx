@@ -11,10 +11,16 @@ export const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
+      const response = await fetch(
         "https://todolistbe.vercel.app/api/v1/user/login",
-        { email, password },
-        { withCredentials: true }
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+          credentials: "include",
+        }
       );
 
       if (response.status === 200) {
