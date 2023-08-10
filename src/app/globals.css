@@ -17,11 +17,23 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #1ecbe1;
+}
+
+.container {
+  padding: 7% 15%;
+}
+
+.brand {
+  font-size: 2rem;
+}
+
+#title .container {
+  padding: 3% 15% 7%;
+  text-align: left;
+}
+
+.big-heading {
+  font-size: 3rem;
+  line-height: 1.5;
 }
