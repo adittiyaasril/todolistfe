@@ -11,20 +11,16 @@ export const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        "https://todolistbe.vercel.app/api/v1/user/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-          credentials: "include",
-        }
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/user/login",
+        { email, password }
       );
 
       if (response.status === 200) {
-        // Redirect user to dashboard or protected page
+        const token = response.data.token;
+        // Store the token in a secure way, such as in local storage or a cookie
+        localStorage.setItem("jwtToken", token);
+
         window.location.href = "/todo";
       }
     } catch (error) {

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export const TodoList = () => {
@@ -7,11 +7,14 @@ export const TodoList = () => {
   const [newTodo, setNewTodo] = useState("");
 
   const fetchTodoItems = async () => {
+    const jwtToken = localStorage.getItem("jwtToken");
     try {
       const response = await axios.get(
         "https://todolistbe.vercel.app/api/v1/todo/show",
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
         }
       );
       setTodoItems(response.data.todo);
@@ -26,10 +29,13 @@ export const TodoList = () => {
 
   const handleDeleteTodo = async (itemId) => {
     try {
+      const jwtToken = localStorage.getItem("jwtToken");
       await axios.delete(
         `https://todolistbe.vercel.app/api/v1/todo/delete/${itemId}`,
         {
-          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
         }
       );
 
@@ -38,14 +44,20 @@ export const TodoList = () => {
       console.error("Error deleting ToDo item:", error);
     }
   };
+
   const handleCreateTodo = async () => {
     try {
+      const jwtToken = localStorage.getItem("jwtToken");
       const response = await axios.post(
         "https://todolistbe.vercel.app/api/v1/todo/create",
         {
           item: newTodo,
         },
-        { withCredentials: true }
+        {
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
+        }
       );
       if (response.data.msg === "Todo successfully created") {
         setNewTodo("");
