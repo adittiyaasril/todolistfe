@@ -11,7 +11,7 @@ export const LandingPage = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.delete("https://todolistbe.vercel.app/api/v1/user/logout", {
+      await axios.delete("http://localhost:8000/api/v1/user/logout", {
         withCredentials: true,
       });
       router.replace("/login");
@@ -24,7 +24,7 @@ export const LandingPage = () => {
     const checkAuthStatus = async () => {
       try {
         const response = await axios.get(
-          "https://todolistbe.vercel.app/api/v1/user/check",
+          "http://localhost:8000/api/v1/user/check",
           { withCredentials: true }
         );
         setIsAuthenticated(response.data.isAuthenticated);
@@ -32,7 +32,7 @@ export const LandingPage = () => {
         if (response.data.isAuthenticated) {
           // Fetch the user's information and update the username state
           const userResponse = await axios.get(
-            "https://todolistbe.vercel.app/api/v1/user/profile",
+            "http://localhost:8000/api/v1/user/profile",
             { withCredentials: true }
           );
           setUsername(userResponse.data.username);
