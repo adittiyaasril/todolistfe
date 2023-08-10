@@ -1,24 +1,23 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LoginForm } from "./LoginForm";
 import axios from "axios";
 
 const Login = () => {
   const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        const response = await axios.get(
-          "https://todolistbe.vercel.app/api/v1/user/check",
-          { withCredentials: true }
-        );
-        const isAuthenticated = response.data.isAuthenticated;
-        console.log(response.data);
+        const token = localStorage.getItem("jwtToken"); // Get the JWT token from storage
 
-        if (isAuthenticated) {
+        if (token) {
+          // If token exists, set the authorization header for API requests
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+          setIsAuthenticated(true);
           router.replace("/");
         }
       } catch (error) {
@@ -29,11 +28,7 @@ const Login = () => {
     checkAuthStatus();
   }, [router]);
 
-  return (
-    <div>
-      <LoginForm />
-    </div>
-  );
+  return <div>{!isAuthenticated && <LoginForm />}</div>;
 };
 
 export default Login;

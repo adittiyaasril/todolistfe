@@ -6,6 +6,7 @@ import axios from "axios";
 export const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,8 +21,13 @@ export const LoginForm = () => {
       console.log("Login response:", response.data);
 
       if (response.status === 200) {
+        const token = response.data.token; // Assuming the token is returned in the response
+
+        // Store the token in localStorage or a state management solution
+        localStorage.setItem("token", token);
+
         // Redirect user to dashboard or protected page
-        window.location.href = "/todo";
+        router.push("/todo");
       }
     } catch (error) {
       console.error("Error logging in:", error);

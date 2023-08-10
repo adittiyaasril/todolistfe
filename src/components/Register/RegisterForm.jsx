@@ -15,19 +15,23 @@ export const RegisterForm = () => {
     try {
       const response = await axios.post(
         "https://todolistbe.vercel.app/api/v1/user/register",
-        {
-          username,
-          email,
-          password,
-        }
+        { username, email, password },
+        { withCredentials: true }
       );
 
-      console.log(response.data); // Response from the server
+      console.log("Register response:", response.data);
 
-      // You can redirect the user to the login page after successful registration
-      router.replace("/login");
+      if (response.status === 201) {
+        const token = response.data.token; // Assuming the token is returned in the response
+
+        // Store the token in localStorage or a state management solution
+        localStorage.setItem("token", token);
+
+        // Redirect user to dashboard or protected page
+        router.push("/todo");
+      }
     } catch (error) {
-      console.error("Error during registration:", error);
+      console.error("Error registering:", error);
     }
   };
   return (

@@ -11,13 +11,12 @@ const Register = () => {
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        const response = await axios.get(
-          "https://todolistbe.vercel.app/api/v1/user/check",
-          { withCredentials: true }
-        );
-        const isAuthenticated = response.data.isAuthenticated;
+        const token = localStorage.getItem("jwtToken"); // Get the JWT token from storage
 
-        if (isAuthenticated) {
+        if (token) {
+          // If token exists, set the authorization header for API requests
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+          setIsAuthenticated(true);
           router.replace("/");
         }
       } catch (error) {

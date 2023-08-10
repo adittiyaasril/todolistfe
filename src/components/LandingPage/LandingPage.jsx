@@ -11,8 +11,11 @@ export const LandingPage = () => {
 
   const handleLogout = async () => {
     try {
+      const token = localStorage.getItem("token"); // Get the token from localStorage or your state management
       await axios.delete("https://todolistbe.vercel.app/api/v1/user/logout", {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`, // Include the token in the request headers
+        },
       });
       router.replace("/login");
     } catch (error) {
@@ -23,9 +26,14 @@ export const LandingPage = () => {
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
+        const token = localStorage.getItem("token"); // Get the token from localStorage or your state management
         const response = await axios.get(
           "https://todolistbe.vercel.app/api/v1/user/check",
-          { withCredentials: true }
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // Include the token in the request headers
+            },
+          }
         );
         setIsAuthenticated(response.data.isAuthenticated);
 
@@ -33,7 +41,11 @@ export const LandingPage = () => {
           // Fetch the user's information and update the username state
           const userResponse = await axios.get(
             "https://todolistbe.vercel.app/api/v1/user/profile",
-            { withCredentials: true }
+            {
+              headers: {
+                Authorization: `Bearer ${token}`, // Include the token in the request headers
+              },
+            }
           );
           setUsername(userResponse.data.username);
         }
@@ -44,6 +56,7 @@ export const LandingPage = () => {
 
     checkAuthStatus();
   }, []);
+
   return (
     <div id="title">
       <div className="container mx-auto p-4 flex justify-between items-center text-amber-100">
