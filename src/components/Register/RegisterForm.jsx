@@ -28,7 +28,7 @@ export const RegisterForm = () => {
         localStorage.setItem("token", token);
 
         // Redirect user to dashboard or protected page
-        router.push("/todo");
+        router.push("/login");
       }
     } catch (error) {
       console.error("Error registering:", error);

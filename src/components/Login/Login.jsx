@@ -18,7 +18,9 @@ const Login = () => {
           // If token exists, set the authorization header for API requests
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
           setIsAuthenticated(true);
-          router.replace("/");
+          router.replace("/"); // Redirect the user to the home page if already logged in
+        } else {
+          setIsAuthenticated(false);
         }
       } catch (error) {
         console.error("Error checking authentication status:", error);
