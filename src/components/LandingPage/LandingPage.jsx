@@ -9,18 +9,14 @@ export const LandingPage = () => {
   const [username, setUsername] = useState("");
   const router = useRouter();
 
-  const handleLogout = async () => {
-    try {
-      const token = localStorage.getItem("token"); // Get the token from localStorage or your state management
-      await axios.delete("https://todolistbe.vercel.app/api/v1/user/logout", {
-        headers: {
-          Authorization: `Bearer ${token}`, // Include the token in the request headers
-        },
-      });
-      router.replace("/login");
-    } catch (error) {
-      console.error("Error during logout:", error);
-    }
+  const handleLogout = () => {
+    // Clear the token from local storage to log the user out
+    localStorage.removeItem("token");
+    setIsAuthenticated(false);
+    setUsername(""); // Optionally reset the username state
+
+    // Redirect the user to the login page
+    router.replace("/login");
   };
 
   useEffect(() => {
