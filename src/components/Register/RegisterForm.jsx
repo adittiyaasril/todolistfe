@@ -40,7 +40,9 @@ export const RegisterForm = () => {
         <div className="bg-white rounded-2xl shadow-2xl flex max-w-4xl">
           <div className=" p-5">
             <div className="text-left font-bold">
-              <span className="text-green-500">Todo</span>List
+              <a href="/">
+                <span className="text-green-500">Todo</span>List
+              </a>
             </div>
             <div className="py-10">
               <h2 className="text-3xl font-bold text-green-500 mb-2">
