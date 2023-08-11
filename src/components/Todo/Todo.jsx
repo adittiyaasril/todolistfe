@@ -16,7 +16,7 @@ const Todo = () => {
         if (token) {
           setLoggedIn(true);
         } else {
-          router.push("/");
+          router.push("/login");
         }
       } catch (error) {
         console.error("Error checking authentication status:", error);
