@@ -22,7 +22,7 @@ const Login = () => {
     checkAuthStatus();
   }, [router]);
 
-  return <div>{!localStorage.getItem("token") && <LoginForm />}</div>;
+  return <div>{!window.localStorage.getItem("token") && <LoginForm />}</div>;
 };
 
 export default Login;

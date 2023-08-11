@@ -23,7 +23,7 @@ const Todo = () => {
     checkAuthStatus();
   }, [router]);
 
-  return <div>{localStorage.getItem("token") && <TodoList />}</div>;
+  return <div>{window.localStorage.getItem("token") && <TodoList />}</div>;
 };
 
 export default Todo;

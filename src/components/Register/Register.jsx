@@ -22,7 +22,7 @@ const Register = () => {
     checkAuthStatus();
   }, [router]);
 
-  return <div>{!localStorage.getItem("token") && <RegisterForm />}</div>;
+  return <div>{!window.localStorage.getItem("token") && <RegisterForm />}</div>;
 };
 
 export default Register;
