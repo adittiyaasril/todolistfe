@@ -21,6 +21,7 @@ export const LoginForm = () => {
         // Set the JWT token in localStorage
         localStorage.setItem("token", response.data.token);
         console.log(response);
+        console.log(response.data.token);
       }
     } catch (error) {
       console.error("Error logging in:", error);
