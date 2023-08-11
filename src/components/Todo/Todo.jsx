@@ -1,11 +1,11 @@
 "use client";
-
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { TodoList } from "./TodoList";
 
 const Todo = () => {
   const router = useRouter();
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     const checkAuthStatus = async () => {
@@ -13,6 +13,7 @@ const Todo = () => {
         const token = localStorage.getItem("token"); // Check if token exists
 
         if (!token) {
+          setLoggedIn(true);
           router.push("/"); // Redirect to home if token exists
         }
       } catch (error) {
@@ -23,7 +24,7 @@ const Todo = () => {
     checkAuthStatus();
   }, [router]);
 
-  return <div>{window.localStorage.getItem("token") && <TodoList />}</div>;
+  return <div>{isLoggedIn && <TodoList />}</div>;
 };
 
 export default Todo;

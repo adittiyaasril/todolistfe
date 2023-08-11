@@ -1,10 +1,11 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { RegisterForm } from "./RegisterForm";
 
 const Register = () => {
   const router = useRouter();
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     const checkAuthStatus = async () => {
@@ -12,6 +13,7 @@ const Register = () => {
         const token = localStorage.getItem("token"); // Check if token exists
 
         if (token) {
+          setLoggedIn(true);
           router.push("/"); // Redirect to home if token exists
         }
       } catch (error) {
@@ -22,7 +24,7 @@ const Register = () => {
     checkAuthStatus();
   }, [router]);
 
-  return <div>{!window.localStorage.getItem("token") && <RegisterForm />}</div>;
+  return <div>{!isLoggedIn && <RegisterForm />}</div>;
 };
 
 export default Register;
