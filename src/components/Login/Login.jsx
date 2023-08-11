@@ -1,20 +1,23 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LoginForm } from "./LoginForm";
+import axios from "axios";
 
 const Login = () => {
   const router = useRouter();
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        const token = localStorage.getItem("token"); // Check if token exists
+        const token = localStorage.getItem("jwtToken"); // Get the JWT token from storage
 
         if (token) {
-          setLoggedIn(true);
-          router.push("/"); // Redirect to home if token exists
+          // If token exists, set the authorization header for API requests
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+          setIsAuthenticated(true);
         }
       } catch (error) {
         console.error("Error checking authentication status:", error);
@@ -22,9 +25,19 @@ const Login = () => {
     };
 
     checkAuthStatus();
-  }, [router]);
+  }, []);
 
-  return <div>{!isLoggedIn && <LoginForm />}</div>;
+  // Redirect if user is already authenticated
+  if (isAuthenticated) {
+    router.push("/");
+    return null;
+  }
+
+  return (
+    <div>
+      <LoginForm />
+    </div>
+  );
 };
 
 export default Login;
