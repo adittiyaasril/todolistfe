@@ -40,6 +40,7 @@ export const LandingPage = () => {
         );
 
         setIsAuthenticated(response.data.isAuthenticated);
+        console.log(response);
 
         if (response.data.isAuthenticated) {
           // Fetch the user's information and update the username state
