@@ -21,6 +21,7 @@ export const LoginForm = () => {
       if (response.status === 200) {
         // Set the JWT token in localStorage
         localStorage.setItem("token", response.data.token);
+        console.log(response);
 
         // Redirect user to dashboard or protected page
         window.location.href = "/todo";
