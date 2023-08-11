@@ -1,24 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
 import { TodoList } from "./TodoList";
 
 const Todo = () => {
   const router = useRouter();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        const token = localStorage.getItem("jwtToken"); // Get the JWT token from storage
+        const token = localStorage.getItem("token"); // Check if token exists
 
-        if (token) {
-          // If token exists, set the authorization header for API requests
-          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-          setIsAuthenticated(true);
-          router.replace("/");
+        if (!token) {
+          router.push("/"); // Redirect to home if token exists
         }
       } catch (error) {
         console.error("Error checking authentication status:", error);
@@ -28,7 +23,7 @@ const Todo = () => {
     checkAuthStatus();
   }, [router]);
 
-  return <div>{!isAuthenticated && <TodoList />}</div>;
+  return <div>{localStorage.getItem("token") && <TodoList />}</div>;
 };
 
 export default Todo;

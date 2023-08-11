@@ -25,6 +25,10 @@ export const LandingPage = () => {
         const token = localStorage.getItem("token"); // Get the token from localStorage
         console.log(token);
 
+        if (!token) {
+          return null;
+        }
+
         const response = await axios.get(
           "https://todolistbe.vercel.app/api/v1/user/check",
           {
