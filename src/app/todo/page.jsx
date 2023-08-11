@@ -1,9 +1,9 @@
-import { TodoList } from "@/components/Todo/TodoList";
+import Todo from "@/components/Todo/Todo";
 
 export default function TodoPage() {
   return (
     <>
-      <TodoList />
+      <Todo />
     </>
   );
 }
