@@ -24,7 +24,7 @@ export const LoginForm = () => {
         console.log(response);
 
         // Redirect user to dashboard or protected page
-        window.location.href = "/todo";
+        // window.location.href = "/todo";
       }
     } catch (error) {
       console.error("Error logging in:", error);
