@@ -18,9 +18,6 @@ const Login = () => {
           // If token exists, set the authorization header for API requests
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
           setIsAuthenticated(true);
-          router.replace("/"); // Redirect the user to the home page if already logged in
-        } else {
-          setIsAuthenticated(false);
         }
       } catch (error) {
         console.error("Error checking authentication status:", error);
@@ -28,9 +25,19 @@ const Login = () => {
     };
 
     checkAuthStatus();
-  }, [router]);
+  }, []);
 
-  return <div>{!isAuthenticated && <LoginForm />}</div>;
+  // Redirect if user is already authenticated
+  if (isAuthenticated) {
+    router.push("/");
+    return null;
+  }
+
+  return (
+    <div>
+      <LoginForm />
+    </div>
+  );
 };
 
 export default Login;
