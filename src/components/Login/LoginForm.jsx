@@ -18,10 +18,8 @@ export const LoginForm = () => {
       );
 
       if (response.status === 200) {
-        // Set the JWT token in localStorage
         localStorage.setItem("token", response.data.token);
-        // console.log(response);
-        // console.log(response.data.token);
+
         window.location.href = "/todo";
       }
     } catch (error) {

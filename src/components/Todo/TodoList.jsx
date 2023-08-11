@@ -8,7 +8,7 @@ export const TodoList = () => {
 
   const fetchTodoItems = async () => {
     try {
-      const token = localStorage.getItem("token"); // Get the token from localStorage
+      const token = localStorage.getItem("token");
 
       const response = await axios.get(
         "https://todolistbe.vercel.app/api/v1/todo/show",
@@ -31,12 +31,12 @@ export const TodoList = () => {
 
   const handleDeleteTodo = async (itemId) => {
     try {
-      const token = localStorage.getItem("token"); // Get the token from localStorage or your state management
+      const token = localStorage.getItem("token");
       await axios.delete(
         `https://todolistbe.vercel.app/api/v1/todo/delete/${itemId}`,
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Include the token in the request headers
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -49,7 +49,7 @@ export const TodoList = () => {
 
   const handleCreateTodo = async () => {
     try {
-      const token = localStorage.getItem("token"); // Get the token from localStorage or your state management
+      const token = localStorage.getItem("token");
       const response = await axios.post(
         "https://todolistbe.vercel.app/api/v1/todo/create",
         {
@@ -57,7 +57,7 @@ export const TodoList = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Include the token in the request headers
+            Authorization: `Bearer ${token}`,
           },
         }
       );

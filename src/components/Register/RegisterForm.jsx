@@ -22,12 +22,6 @@ export const RegisterForm = () => {
       console.log("Register response:", response.data);
 
       if (response.status === 201) {
-        const token = response.data.token; // Assuming the token is returned in the response
-
-        // Store the token in localStorage or a state management solution
-        localStorage.setItem("token", token);
-
-        // Redirect user to dashboard or protected page
         router.push("/login");
       }
     } catch (error) {

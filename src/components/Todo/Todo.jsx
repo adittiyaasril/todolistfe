@@ -11,12 +11,12 @@ const Todo = () => {
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        const token = localStorage.getItem("token"); // Check if token exists
+        const token = localStorage.getItem("token");
 
         if (token) {
           setLoggedIn(true);
         } else {
-          router.push("/"); // Redirect to login if no token exists
+          router.push("/");
         }
       } catch (error) {
         console.error("Error checking authentication status:", error);

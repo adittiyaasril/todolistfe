@@ -10,19 +10,17 @@ export const LandingPage = () => {
   const router = useRouter();
 
   const handleLogout = () => {
-    // Clear the token from local storage to log the user out
     localStorage.removeItem("token");
     setIsAuthenticated(false);
-    setUsername(""); // Optionally reset the username state
+    setUsername("");
 
-    // Redirect the user to the login page
     router.replace("/login");
   };
 
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        const token = localStorage.getItem("token"); // Get the token from localStorage
+        const token = localStorage.getItem("token");
         console.log(token);
 
         if (!token) {
@@ -43,7 +41,6 @@ export const LandingPage = () => {
         console.log(response);
 
         if (response.data.isAuthenticated) {
-          // Fetch the user's information and update the username state
           const userResponse = await axios.get(
             "https://todolistbe.vercel.app/api/v1/user/profile",
             {
@@ -68,7 +65,6 @@ export const LandingPage = () => {
         <div className="text-base ml-auto">
           {isAuthenticated ? (
             <>
-              {/* Show username and Logout when logged in */}
               <span className="mr-4">{username}</span>
               <button className="hover:text-yellow-200" onClick={handleLogout}>
                 Logout
@@ -76,7 +72,6 @@ export const LandingPage = () => {
             </>
           ) : (
             <>
-              {/* Show Login and Register when not logged in */}
               <Link href="/login">
                 <span className="hover:text-yellow-200 mr-4">Login</span>
               </Link>

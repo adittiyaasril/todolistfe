@@ -10,11 +10,11 @@ const Login = () => {
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        const token = localStorage.getItem("token"); // Check if token exists
+        const token = localStorage.getItem("token");
 
         if (token) {
           setLoggedIn(true);
-          router.push("/"); // Redirect to home if token exists
+          router.push("/");
         }
       } catch (error) {
         console.error("Error checking authentication status:", error);
