@@ -6,7 +6,6 @@ import axios from "axios";
 export const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,9 +21,6 @@ export const LoginForm = () => {
         // Set the JWT token in localStorage
         localStorage.setItem("token", response.data.token);
         console.log(response);
-
-        // Redirect user to dashboard or protected page
-        // window.location.href = "/todo";
       }
     } catch (error) {
       console.error("Error logging in:", error);
