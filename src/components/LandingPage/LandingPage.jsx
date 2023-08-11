@@ -32,7 +32,8 @@ export const LandingPage = () => {
           "https://todolistbe.vercel.app/api/v1/user/check",
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
             },
           }
         );
