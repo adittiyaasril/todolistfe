@@ -6,7 +6,7 @@
 
 ## Installation
 
-You need to install Node.js and NPM,
+You need to install Node.js and NPM if u want to use in localhost
 
 ## How to use
 
