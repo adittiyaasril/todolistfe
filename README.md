@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# To Do List App Mock Test
 
-## Getting Started
+#### Preview
 
-First, run the development server:
+![Project](/public/preview.gif)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Installation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You need to install Node.js and NPM,
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## How to use
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Open the ToDoList App in your browser used this link **https://todolistfe-seven.vercel.app/**
+- In the landing page u can click register to create a new account in register page
+- Login with ur registered account or used this account `Email: adittiya@gmail.com` and `Password: 12345`
+- Used the ToDoList App to create, delete ur today list
 
-## Learn More
+## How to use in your local device
 
-To learn more about Next.js, take a look at the following resources:
+- Clone or download Repository
+- Open Directory using hyper, ubuntu, git bash, or terminal
+- Install package with Run `npm i`
+- Run server with `npm start` or `npm run dev`
+- Open `http://localhost:3000` in your browser
+- In Landing page click the register if u don't have an account
+- Login with ur registered account and now u can use the ToDoList app
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Package Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- axios
+- eslint
+- eslint-config-next
+- next
+- postcss
+- react
+- react-dom
+- bcrypt
+- tailwindcss
 
-## Deploy on Vercel
+## Mock Test Answer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Apakah Kegunaan JSON pada REST API?
+   JSON sendiri merupakan singkatan dari (JavaScript Object Notation) yaitu sebuah format data yang digunakan untuk pertukaran dan penyimpanan data,
+   JSON digunakan untuk mengirim data antara server dan client dalam bentuk yang terdiri dari objek dan array
+   Pada RestAPI JSON digunakan sebagai format untuk bertukar data client dan server atau antar aplikasi.
+2. Jelaskan bagaimana REST API bekerja
+   RESTful API bekerja dengan cara memanipulasi resource dan representasi. Representasi ini saling dipertukarkan di antara pengguna dan server melalui HTTP.
+   Jadi, saat pengguna ingin menggunakan fungsi suatu aplikasi, perangkatnya akan mengirimkan permintaan melalui HTTP ke server. Server akan mencari resource dan mengomunikasikan representasi state sebagai respons kepada pengguna melalui protokol yang sama. Representasi ini bisa dibuat dalam berbagai format, seperti JSON atau XML.
