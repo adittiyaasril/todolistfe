@@ -38,7 +38,6 @@ You need to install Node.js and NPM if u want to use in localhost
 - postcss
 - react
 - react-dom
-- bcrypt
 - tailwindcss
 
 ## Mock Test Answer
